@@ -1,9 +1,8 @@
-import java.io.*;
 import java.util.*;
 
 public class Main{
     public static List<Student> students = new ArrayList<>();
-    public static List<Lessons> lessons = new ArrayList<>();
+    public static List<Teacher> teachers = new ArrayList<>();
 
     static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -32,10 +31,11 @@ public class Main{
                         teacher.menu();
                     }
                     case 3 -> {
-                        staff.menu();
+                        StaffMenu.showMenu();
                     }
                     case 0-> {
                         System.out.println("保存が終了しました。");
+                        return;
                     }
                     default -> System.out.println("無効な入力！！！");
                 }
