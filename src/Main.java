@@ -3,11 +3,13 @@ import java.util.*;
 public class Main{
     public static List<Student> students = new ArrayList<>();
     public static List<Teacher> teachers = new ArrayList<>();
+    public static List<Lesson> lessons = new ArrayList<>();
     public static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
+        CsvUtil.loadStudents(students);
+        CsvUtil.loadTeachers(teachers);
+        CsvUtil.loadLessons(lessons);
         while (true){
             try{
                 System.out.print("""
@@ -35,6 +37,9 @@ public class Main{
                         StaffMenu.showMenu();
                     }
                     case 0-> {
+                        CsvUtil.saveStudents(students);
+                        CsvUtil.saveTeachers(teachers);
+                        CsvUtil.saveLessons(lessons);
                         System.out.println("保存が終了しました。");
                         return;
                     }
@@ -45,7 +50,4 @@ public class Main{
             }
         }
     }
-
-
-
 }
