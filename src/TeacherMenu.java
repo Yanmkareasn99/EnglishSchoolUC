@@ -34,7 +34,7 @@ public class TeacherMenu {
                 System.out.println(
                         "レッスンID=" + l.getLessonId() +
                                 " 生徒ID=" + l.getStudentId() +
-                                " コース=" + l.getCourse() +
+                                " レッスンタイプ=" + l.getLessonType() +
                                 " 日時=" + l.getDateTime()
                 );
                 found = true;
@@ -54,7 +54,7 @@ public class TeacherMenu {
             if (l.getLessonId() == lessonId) {
                 Student student = findStudent(l.getStudentId());
                 if (student != null) {
-                    String summary = l.getDateTime() + " " + l.getCourse();
+                    String summary = l.getDateTime() + " " + l.getLessonType();
                     student.setLesson(summary);
                     System.out.println("出席を登録しました。");
                 } else {

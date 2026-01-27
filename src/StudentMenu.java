@@ -56,7 +56,7 @@ public class StudentMenu {
                 System.out.println(
                         "レッスンID=" + l.getLessonId() +
                                 " 講師ID=" + l.getTeacherId() +
-                                " コース=" + l.getCourse() +
+                                " レッスンタイプ=" + l.getLessonType() +
                                 " 日時=" + l.getDateTime()
                 );
                 found = true;

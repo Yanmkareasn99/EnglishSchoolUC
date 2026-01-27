@@ -3,21 +3,21 @@ public class Lesson {
     private int lessonId;
     private int studentId;
     private int teacherId;
-    private String course;
+    private String lessonType;
     private String dateTime;
     private String status;
 
     public Lesson(int lessonId, int studentId, int teacherId,
-                  String course, String dateTime) {
-        this(lessonId, studentId, teacherId, course, dateTime, "予約");
+                  String lessonType, String dateTime) {
+        this(lessonId, studentId, teacherId, lessonType, dateTime, "予約");
     }
 
     public Lesson(int lessonId, int studentId, int teacherId,
-                  String course, String dateTime, String status) {
+                  String lessonType, String dateTime, String status) {
         this.lessonId = lessonId;
         this.studentId = studentId;
         this.teacherId = teacherId;
-        this.course = course;
+        this.lessonType = lessonType;
         this.dateTime = dateTime;
         this.status = status;
     }
@@ -25,7 +25,7 @@ public class Lesson {
     public int getLessonId() { return lessonId; }
     public int getStudentId() { return studentId; }
     public int getTeacherId() { return teacherId; }
-    public String getCourse() { return course; }
+    public String getLessonType() { return lessonType; }
     public String getDateTime() { return dateTime; }
     public String getStatus() { return status; }
 
@@ -33,6 +33,6 @@ public class Lesson {
 
     public String toCsv() {
         return lessonId + "," + studentId + "," + teacherId + "," +
-                course + "," + dateTime + "," + status;
+                lessonType + "," + dateTime + "," + status;
     }
 }

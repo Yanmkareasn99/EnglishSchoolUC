@@ -223,7 +223,8 @@ public class StaffMenu {
                 System.out.println(
                         "レッスンID=" + l.getLessonId() +
                                 " 生徒ID=" + l.getStudentId() +
-                                " コース=" + l.getCourse() +
+                                " 講師ID=" + l.getTeacherId() +
+                                " レッスンタイプ=" + l.getLessonType() +
                                 " 日時=" + l.getDateTime()
                 );
             }
