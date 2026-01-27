@@ -5,6 +5,7 @@ public class Main{
     public static List<Teacher> teachers = new ArrayList<>();
     public static List<Lesson> lessons = new ArrayList<>();
     public static final Scanner sc = new Scanner(System.in);
+    public static final String LINE = "----------------------------------------";
 
     public static void main(String[] args) {
         CsvUtil.loadStudents(students);
@@ -12,6 +13,7 @@ public class Main{
         CsvUtil.loadLessons(lessons);
         while (true){
             try{
+                System.out.println(LINE);
                 System.out.print("""
               
                                     ***** 英会話スクールシステム *****

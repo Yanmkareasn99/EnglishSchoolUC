@@ -1,26 +1,28 @@
 //Staff have all the authorities except recordAttandance();
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
-import java.util.*;
 
 public class StaffMenu {
 
     public static void showMenu() {
         while (true) {
             try {
-                System.out.println("""
-                        
-                        1: 登録
-                        2: 照会
-                        3: 変更
-                        4: ポイント
-                        5: 予約代行
-                        6: 取消
+                System.out.println(Main.LINE);
+                System.out.print("""
+                       
+                        1: 生徒登録
+                        2: 生徒一覧
+                        3: 生徒情報変更
+                        4: ポイント購入
+                        5: レッスン予約
+                        6: レッスンキャンセル
                         7: 講師登録
                         8: 講師一覧
                         9: 生徒退会
                         0: 戻る
-                        """);
+                       
+                       番号を入力してください>>> """);
+
 
                 int choice = Integer.parseInt(Main.sc.nextLine());
 
@@ -45,6 +47,7 @@ public class StaffMenu {
     }
 
     public static void addStudent() {
+        System.out.println(Main.LINE);
         int id = Main.students.size()+1;
 
         System.out.print("名前: ");
@@ -69,12 +72,14 @@ public class StaffMenu {
                 phone, email, course,
                 0, "在籍", "", ""
         );
+        s.setRegisterDate(java.time.LocalDate.now());
 
         Main.students.add(s);
         System.out.println("生徒を登録しました。");
     }
 
     public static void viewStudents() {
+        System.out.println(Main.LINE);
         System.out.println("\n------ 生徒一覧 ------");
         for (Student s : Main.students) {
             if (!"在籍".equals(s.getStatus())) {
@@ -84,12 +89,14 @@ public class StaffMenu {
                     "ID=" + s.getId() +
                             " 名前=" + s.getName() +
                             " コース=" + s.getCourse() +
-                            " ポイント=" + s.getPoints()
+                            " ポイント=" + s.getPoints() +
+                            " 登録日=" + s.getRegisterDate()
             );
         }
     }
 
     public static void changeStudent() {
+        System.out.println(Main.LINE);
         System.out.print("変更する生徒ID: ");
         int id = Integer.parseInt(Main.sc.nextLine());
 
@@ -101,7 +108,7 @@ public class StaffMenu {
                 }
                 System.out.print("新しいコース名: ");
                 String course = Main.sc.nextLine();
-                System.out.println("※コース変更（簡易実装）");
+                System.out.println("****コース変更****");
                 System.out.println("変更前: " + s.getCourse());
                 s.setCourse(course);
                 System.out.println("変更後: " + course);
@@ -112,6 +119,7 @@ public class StaffMenu {
     }
 
     public static void removeStudent() {
+        System.out.println(Main.LINE);
         System.out.print("退会する生徒ID: ");
         int id = Integer.parseInt(Main.sc.nextLine());
 
@@ -123,6 +131,7 @@ public class StaffMenu {
                 }
                 s.setStatus("退学");
                 System.out.println("退学処理が完了しました。");
+
                 return;
             }
         }
@@ -139,6 +148,7 @@ public class StaffMenu {
     }
 
     public static void addPoints() {
+        System.out.println(Main.LINE);
         System.out.print("生徒ID: ");
         int id = Integer.parseInt(Main.sc.nextLine());
 
@@ -163,8 +173,8 @@ public class StaffMenu {
     }
 
     public static void reserveLesson() {
-        System.out.print("レッスンID: ");
-        int lessonId = Integer.parseInt(Main.sc.nextLine());
+        System.out.println(Main.LINE);
+        int lessonId = Main.lessons.size()+1;
 
         System.out.print("生徒ID: ");
         int studentId = Integer.parseInt(Main.sc.nextLine());
@@ -177,7 +187,7 @@ public class StaffMenu {
         System.out.print("講師ID: ");
         int teacherId = Integer.parseInt(Main.sc.nextLine());
 
-        String course = CourseUtil.selectCourse();
+        String lessonType = CourseUtil.SelectLessonType();
 
         if (!student.consumePoints(50)) {
             System.out.println("ポイントが不足しています（必要: 50）。");
@@ -198,13 +208,14 @@ public class StaffMenu {
             return;
         }
 
-        Lesson l = new Lesson(lessonId, studentId, teacherId, course, DateTimeUtil.format(dateTime));
+        Lesson l = new Lesson(lessonId, studentId, teacherId, lessonType, DateTimeUtil.format(dateTime));
         Main.lessons.add(l);
 
         System.out.println("レッスンを予約しました。");
     }
 
     public static void cancelLesson() {
+        System.out.println(Main.LINE);
         System.out.print("取消するレッスンID: ");
         int lessonId = Integer.parseInt(Main.sc.nextLine());
 
@@ -223,6 +234,7 @@ public class StaffMenu {
     }
 
     public static void addTeacher() {
+        System.out.println(Main.LINE);
         int id = Main.teachers.size() + 1;
 
         System.out.print("講師名: ");
@@ -234,6 +246,7 @@ public class StaffMenu {
     }
 
     public static void viewTeachers() {
+        System.out.println(Main.LINE);
         System.out.println("\n------ 講師一覧 ------");
         for (Teacher t : Main.teachers) {
             System.out.println(

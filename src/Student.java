@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Student {
@@ -5,17 +6,18 @@ public class Student {
     private int id, age, points, phone;
     private String name, sex, email, course, status, address, lesson;
     private LocalDateTime pointExpireAt;
+    private LocalDate registerDate;
 
     public Student(int id, String name, int age, String sex,
                    int phone, String email, String course,
                    int points, String status, String lesson, String address) {
-        this(id, name, age, sex, phone, email, course, points, status, lesson, address, null);
+        this(id, name, age, sex, phone, email, course, points, status, lesson, address, null, null);
     }
 
     public Student(int id, String name, int age, String sex,
                    int phone, String email, String course,
                    int points, String status, String lesson, String address,
-                   LocalDateTime pointExpireAt) {
+                   LocalDateTime pointExpireAt, LocalDate registerDate) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -28,6 +30,7 @@ public class Student {
         this.lesson = lesson;
         this.address = address;
         this.pointExpireAt = pointExpireAt;
+        this.registerDate = registerDate;
     }
 
     public int getId() { return id; }
@@ -44,10 +47,12 @@ public class Student {
     public String getStatus() { return status; }
     public String getAddress() { return address; }
     public String getLesson() { return lesson; }
+    public LocalDate getRegisterDate() { return registerDate; }
 
     public void setCourse(String course) { this.course = course; }
     public void setLesson(String lesson) { this.lesson = lesson; }
     public void setStatus(String status) { this.status = status; }
+    public void setRegisterDate(LocalDate registerDate) { this.registerDate = registerDate; }
 
     //+200 increments only
     public boolean addPoints(int p) {
@@ -75,7 +80,7 @@ public class Student {
         return id + "," + name + "," + age + "," + sex + "," +
                 phone + "," + email + "," + points + "," +
                 course + "," + lesson + "," + status + "," + address + "," +
-                formatPointExpireAt();
+                formatPointExpireAt() + "," + formatRegisterDate();
     }
 
     private boolean isPointsExpired(LocalDateTime now) {
@@ -90,6 +95,13 @@ public class Student {
             return "";
         }
         return DateTimeUtil.format(pointExpireAt);
+    }
+
+    private String formatRegisterDate() {
+        if (registerDate == null) {
+            return "";
+        }
+        return registerDate.toString();
     }
 
     private void normalizePoints(LocalDateTime now) {

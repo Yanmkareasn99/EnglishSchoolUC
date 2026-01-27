@@ -1,6 +1,7 @@
 public class CourseUtil {
     private static final String[] COURSES = {"日常会話", "留学準備", "ビジネス", "キッズ"};
     private static final String[] LEVELS = {"初級", "上級"};
+    private static final String[] LESSONS = {"グループレッスン", "マンツーマン"};
 
     public static String selectCourse() {
         int courseIndex = selectCourseIndex();
@@ -76,6 +77,28 @@ public class CourseUtil {
                 switch (choice) {
                     case 1 -> { return true; }
                     case 2 -> { return false; }
+                    default -> System.out.println("無効な入力です。");
+                }
+            } catch (NumberFormatException ignored) {
+                System.out.println("無効な入力です。");
+            }
+        }
+    }
+
+    public static String SelectLessonType(){
+        int i;
+        while (true) {
+            System.out.println("""
+                    
+                    レッスンタイプ
+                    1. グループレッスン
+                    2. マンツーマン
+                    番号を入力してください>>> """);
+            try {
+                int choice = Integer.parseInt(Main.sc.nextLine());
+                switch (choice) {
+                    case 1 -> { return("グループレッスン"); }
+                    case 2 -> { return("マンツーマン"); }
                     default -> System.out.println("無効な入力です。");
                 }
             } catch (NumberFormatException ignored) {

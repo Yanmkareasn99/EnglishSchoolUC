@@ -1,4 +1,5 @@
 import java.io.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -7,14 +8,14 @@ public class CsvUtil {
     public static void saveStudents(List<Student> students) {
         try (FileWriter fw = new FileWriter("students.csv")) {
 
-            fw.write("id,name,age,sex,phone,email,point,course,lesson,status,address,pointExpireAt\n");
+            fw.write("id,name,age,sex,phone,email,point,course,lesson,status,address,pointExpireAt,registerDate\n");
 
             for (Student s : students) {
                 fw.write(s.toCsv() + "\n");
             }
 
-        } catch (IOException e) {
-            System.out.println("学生CSV保存エラー");
+        } catch (Exception e) {
+            System.out.println("生徒のCSV保存エラー");
         }
     }
 
@@ -59,6 +60,10 @@ public class CsvUtil {
                 if (d.length > 11 && !d[11].isEmpty()) {
                     pointExpireAt = DateTimeUtil.parse(d[11]);
                 }
+                LocalDate registerDate = null;
+                if (d.length > 12 && !d[12].isEmpty()) {
+                    registerDate = LocalDate.parse(d[12]);
+                }
 
                 Student s = new Student(
                         Integer.parseInt(d[0]),         // id
@@ -72,14 +77,15 @@ public class CsvUtil {
                         d[9],                           // status
                         d[8],                           // lesson
                         d.length > 10 ? d[10] : "",     // address
-                        pointExpireAt
+                        pointExpireAt,
+                        registerDate
                 );
 
                 students.add(s);
             }
 
-        } catch (IOException e) {
-            System.out.println("学生CSV読込なし（初回起動）");
+        } catch (Exception e) {
+            System.out.println("CSVがないです。");
         }
     }
 
@@ -100,8 +106,8 @@ public class CsvUtil {
                 teachers.add(t);
             }
 
-        } catch (IOException e) {
-            System.out.println("講師CSV読込なし（初回起動）");
+        } catch (Exception e) {
+            System.out.println("CSVがないです。");
         }
     }
 
@@ -128,8 +134,8 @@ public class CsvUtil {
                 lessons.add(l);
             }
 
-        } catch (IOException e) {
-            System.out.println("レッスンCSV読込なし（初回起動）");
+        } catch (Exception e) {
+            System.out.println("CSVがないです。");
         }
     }
 }

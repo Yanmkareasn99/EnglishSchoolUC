@@ -2,12 +2,14 @@ public class TeacherMenu {
     public static void showMenu() {
         while (true) {
             try {
-                System.out.println("""
+                System.out.println(Main.LINE);
+                System.out.print("""
                         
-                        1: レッスン照会
+                        1: レッスン一覧
                         2: 出席登録
                         0: 戻る
-                        """);
+                        
+                        番号を入力してください>>> """);
                 int choice = Integer.parseInt(Main.sc.nextLine());
                 switch (choice) {
                     case 1 -> viewLessons();
@@ -22,6 +24,7 @@ public class TeacherMenu {
     }
 
     private static void viewLessons() {
+        System.out.println(Main.LINE);
         System.out.print("講師ID: ");
         int teacherId = Integer.parseInt(Main.sc.nextLine());
 
@@ -43,6 +46,7 @@ public class TeacherMenu {
     }
 
     private static void recordAttendance() {
+        System.out.println(Main.LINE);
         System.out.print("レッスンID: ");
         int lessonId = Integer.parseInt(Main.sc.nextLine());
 
@@ -63,11 +67,6 @@ public class TeacherMenu {
     }
 
     private static Student findStudent(int studentId) {
-        for (Student s : Main.students) {
-            if (s.getId() == studentId) {
-                return s;
-            }
-        }
-        return null;
+        return StaffMenu.findStudent(studentId);
     }
 }
