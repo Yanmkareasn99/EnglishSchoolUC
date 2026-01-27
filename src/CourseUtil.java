@@ -15,7 +15,7 @@ public class CourseUtil {
         return course;
     }
 
-    private static int selectCourseIndex() {
+    public static int selectCourseIndex() {
         while (true) {
             System.out.println("""
                     
@@ -41,7 +41,7 @@ public class CourseUtil {
         }
     }
 
-    private static int selectLevelIndex() {
+    public static int selectLevelIndex() {
         while (true) {
             System.out.println("""
                     
@@ -63,7 +63,7 @@ public class CourseUtil {
         }
     }
 
-    private static boolean selectToeicOption() {
+    public static boolean selectToeicOption() {
         while (true) {
             System.out.println("""
                     

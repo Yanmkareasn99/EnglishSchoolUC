@@ -83,28 +83,28 @@ public class Student {
                 formatPointExpireAt() + "," + formatRegisterDate();
     }
 
-    private boolean isPointsExpired(LocalDateTime now) {
+    public boolean isPointsExpired(LocalDateTime now) {
         if (pointExpireAt == null) {
             return false;
         }
         return now.isAfter(pointExpireAt);
     }
 
-    private String formatPointExpireAt() {
+    public String formatPointExpireAt() {
         if (pointExpireAt == null) {
             return "";
         }
         return DateTimeUtil.format(pointExpireAt);
     }
 
-    private String formatRegisterDate() {
+    public String formatRegisterDate() {
         if (registerDate == null) {
             return "";
         }
         return registerDate.toString();
     }
 
-    private void normalizePoints(LocalDateTime now) {
+    public void normalizePoints(LocalDateTime now) {
         if (isPointsExpired(now)) {
             points = 0;
             pointExpireAt = null;
