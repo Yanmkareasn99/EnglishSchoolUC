@@ -5,4 +5,9 @@ public class Design {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
+
+    public static void escape(){
+        System.out.println("0: 戻る");
+
+    }
 }

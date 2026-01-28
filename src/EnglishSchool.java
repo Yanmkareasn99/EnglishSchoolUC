@@ -4,7 +4,6 @@ public class EnglishSchool {
     public static List<Student> students = new ArrayList<>();
     public static List<Teacher> teachers = new ArrayList<>();
     public static List<Lesson> lessons = new ArrayList<>();
-    public static List<LessonCost> lessonCosts = new ArrayList<>();
     public static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
 public class StaffMenu {
+    static final boolean shwStd = true;
 
     public static void showMenu() {
         while (true) {
@@ -159,6 +160,7 @@ public class StaffMenu {
 
     public static void addPoints() {
         System.out.println(Design.LINE);
+        viewStudents();
         System.out.print("生徒ID: ");
         int id = Integer.parseInt(EnglishSchool.sc.nextLine());
 
@@ -184,8 +186,10 @@ public class StaffMenu {
 
     public static void reserveLesson() {
         System.out.println(Design.LINE);
+        if(shwStd){
+            viewStudents();
+        }
         int lessonId = EnglishSchool.lessons.size()+1;
-
         System.out.print("生徒ID: ");
         int studentId = Integer.parseInt(EnglishSchool.sc.nextLine());
         Student student = findStudent(studentId);
@@ -193,13 +197,13 @@ public class StaffMenu {
             System.out.println("在籍中の生徒が見つかりません。");
             return;
         }
-
+        viewTeachers();
         System.out.print("講師ID: ");
         int teacherId = Integer.parseInt(EnglishSchool.sc.nextLine());
 
         String lessonType = CourseUtil.SelectLessonType();
 
-        System.out.print("日時 (例: 2026-02-01 18:00): ");
+        System.out.print("日時 (例: 2026-02-01 18): ");
         String input = EnglishSchool.sc.nextLine();
         LocalDateTime dateTime;
         try {
@@ -312,8 +316,6 @@ public class StaffMenu {
                 System.out.println("数字を入力してください！！！");
             }
         }
-
-
     }
     public static void viewProfit() {
 
