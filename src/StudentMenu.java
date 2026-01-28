@@ -2,7 +2,8 @@ public class StudentMenu {
     public static void showMenu() {
         while (true) {
             try {
-                System.out.println(EnglishSchool.LINE);
+                Design.clearScreen();
+                System.out.println(Design.LINE);
                 System.out.print("""
                         
                         1: 生徒情報確認
@@ -26,7 +27,7 @@ public class StudentMenu {
     }
 
     public static void viewStudent() {
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         System.out.print("生徒ID: ");
         int id = Integer.parseInt(EnglishSchool.sc.nextLine());
 
@@ -47,7 +48,7 @@ public class StudentMenu {
     }
 
     public static void viewLessons() {
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         System.out.print("生徒ID: ");
         int studentID = Integer.parseInt(EnglishSchool.sc.nextLine());
         boolean found = false;

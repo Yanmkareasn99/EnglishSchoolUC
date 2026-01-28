@@ -7,7 +7,8 @@ public class StaffMenu {
     public static void showMenu() {
         while (true) {
             try {
-                System.out.println(EnglishSchool.LINE);
+                Design.clearScreen();
+                System.out.println(Design.LINE);
                 System.out.print("""
                        
                         1: 生徒登録
@@ -53,7 +54,7 @@ public class StaffMenu {
     }
 
     public static void addStudent() {
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         int id = EnglishSchool.students.size()+1;
 
         System.out.print("名前: ");
@@ -85,7 +86,7 @@ public class StaffMenu {
     }
 
     public static void viewStudents() {
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         System.out.println("\n------ 生徒一覧 ------");
         for (Student s : EnglishSchool.students) {
             if (!"在籍".equals(s.getStatus())) {
@@ -102,7 +103,7 @@ public class StaffMenu {
     }
 
     public static void changeStudent() {
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         System.out.print("変更する生徒ID: ");
         int id = Integer.parseInt(EnglishSchool.sc.nextLine());
 
@@ -125,7 +126,7 @@ public class StaffMenu {
     }
 
     public static void removeStudent() {
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         System.out.print("退会する生徒ID: ");
         int id = Integer.parseInt(EnglishSchool.sc.nextLine());
 
@@ -154,7 +155,7 @@ public class StaffMenu {
     }
 
     public static void addPoints() {
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         System.out.print("生徒ID: ");
         int id = Integer.parseInt(EnglishSchool.sc.nextLine());
 
@@ -179,7 +180,7 @@ public class StaffMenu {
     }
 
     public static void reserveLesson() {
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         int lessonId = EnglishSchool.lessons.size()+1;
 
         System.out.print("生徒ID: ");
@@ -221,7 +222,7 @@ public class StaffMenu {
     }
 
     public static void viewLessons() {
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         for (Lesson l : EnglishSchool.lessons) {
             if (!"取消".equals(l.getStatus())) {
                 System.out.println(
@@ -236,7 +237,7 @@ public class StaffMenu {
     }
 
     public static void cancelLesson() {
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         System.out.print("取消するレッスンID: ");
         int lessonId = Integer.parseInt(EnglishSchool.sc.nextLine());
 
@@ -255,7 +256,7 @@ public class StaffMenu {
     }
 
     public static void addTeacher() {
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         int id = EnglishSchool.teachers.size() + 1;
 
         System.out.print("講師名: ");
@@ -267,7 +268,7 @@ public class StaffMenu {
     }
 
     public static void viewTeachers() {
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         System.out.println("\n------ 講師一覧 ------");
         for (Teacher t : EnglishSchool.teachers) {
             System.out.println(
@@ -284,7 +285,7 @@ public class StaffMenu {
     }
 
     public static void changeLessonCost(){
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         viewLessonCost();
         while(true){
             try{
@@ -309,11 +310,11 @@ public class StaffMenu {
 
     }
     public static void viewProfit() {
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         int totalPointsUsed = EnglishSchool.lessons.size() * LessonCost.getLessonCost();
         int totalProfitYen = totalPointsUsed * LessonCost.getPointValue();
 
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         System.out.println("ポイント合計=" + totalPointsUsed);
         System.out.println("売上=" + totalProfitYen + "円");
     }

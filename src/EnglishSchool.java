@@ -6,7 +6,6 @@ public class EnglishSchool {
     public static List<Lesson> lessons = new ArrayList<>();
     public static List<LessonCost> lessonCosts = new ArrayList<>();
     public static final Scanner sc = new Scanner(System.in);
-    public static final String LINE = "----------------------------------------";
 
     public static void main(String[] args) {
         CsvUtil.loadStudents(students);
@@ -14,7 +13,7 @@ public class EnglishSchool {
         CsvUtil.loadLessons(lessons);
         while (true){
             try{
-                System.out.println(LINE);
+                System.out.println(Design.LINE);
                 System.out.print("""
               
                         ***** 英会話スクールシステム *****

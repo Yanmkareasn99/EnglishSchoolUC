@@ -2,7 +2,8 @@ public class TeacherMenu {
     public static void showMenu() {
         while (true) {
             try {
-                System.out.println(EnglishSchool.LINE);
+                Design.clearScreen();
+                System.out.println(Design.LINE);
                 System.out.print("""
                         
                         1: レッスン一覧
@@ -24,7 +25,7 @@ public class TeacherMenu {
     }
 
     public static void viewLessons() {
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         System.out.print("講師ID: ");
         int teacherId = Integer.parseInt(EnglishSchool.sc.nextLine());
 
@@ -46,7 +47,7 @@ public class TeacherMenu {
     }
 
     public static void recordAttendance() {
-        System.out.println(EnglishSchool.LINE);
+        System.out.println(Design.LINE);
         System.out.print("レッスンID: ");
         int lessonId = Integer.parseInt(EnglishSchool.sc.nextLine());
 
