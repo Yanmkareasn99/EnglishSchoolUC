@@ -17,9 +17,11 @@ public class StaffMenu {
                         5: レッスン予約
                         6: レッスン確認
                         7: レッスンキャンセル
-                        8: 講師登録
-                        9: 講師一覧
-                        10: 生徒退会
+                        8: レッスン単価
+                        9: 講師登録
+                        10: 講師一覧
+                        11: 生徒退会
+                        12: 売上確認
                         0: 戻る
                        
                        番号を入力してください>>> """);
@@ -35,9 +37,11 @@ public class StaffMenu {
                     case 5 -> reserveLesson();
                     case 6 -> viewLessons();
                     case 7 -> cancelLesson();
-                    case 8 -> addTeacher();
-                    case 9 -> viewTeachers();
-                    case 10 -> removeStudent();
+                    case 8 -> changeLessonCost();
+                    case 9 -> addTeacher();
+                    case 10 -> viewTeachers();
+                    case 11 -> removeStudent();
+                    case 12 -> viewProfit();
                     case 0 -> { return; }
                     default -> System.out.println("無効な入力です。");
                 }
@@ -273,7 +277,44 @@ public class StaffMenu {
         }
     }
 
+    public static void viewLessonCost() {
+        System.out.println("\n------ 単価 ------");
+        System.out.println("レッスン単価=" + LessonCost.getLessonCost() + "ポイント");
+        System.out.println("ポイント単価=" + LessonCost.getPointValue() + "円");
+    }
+
+    public static void changeLessonCost(){
+        System.out.println(Main.LINE);
+        viewLessonCost();
+        while(true){
+            try{
+                System.out.println("""
+                単価を変える
+           1. はい
+           2. いいえ
+           
+    番号を入力してください>>> """);
+                switch (Integer.parseInt(Main.sc.nextLine())){
+                    case 1 -> LessonCost.changeCost();
+                    case 2 -> {
+                        return;
+                    }
+                    default -> System.out.println("無効な入力！！！");
+                }
+            } catch (Exception e) {
+                System.out.println("数字を入力してください！！！");
+            }
+        }
 
 
+    }
+    public static void viewProfit() {
+        System.out.println(Main.LINE);
+        int totalPointsUsed = Main.lessons.size() * LessonCost.getLessonCost();
+        int totalProfitYen = totalPointsUsed * LessonCost.getPointValue();
 
+        System.out.println(Main.LINE);
+        System.out.println("ポイント合計=" + totalPointsUsed);
+        System.out.println("売上=" + totalProfitYen + "円");
+    }
 }

@@ -28,7 +28,7 @@ public class CsvUtil {
                 fw.write(t.toCsv() + "\n");
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("講師CSV保存エラー");
         }
     }
@@ -42,10 +42,24 @@ public class CsvUtil {
                 fw.write(l.toCsv() + "\n");
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("レッスンCSV保存エラー");
         }
     }
+
+//    public static void saveProfits(List<Profit> profits) {
+//        try (FileWriter fw = new FileWriter("profits.csv")) {
+//
+//            fw.write("lessonId,studentId,dateTime,status\n");
+//
+//            for (Profit p : profits) {
+//                fw.write(p.toCsv() + "\n");
+//            }
+//
+//        } catch (Exception e) {
+//            System.out.println("売上CSV保存エラー");
+//        }
+//    }
 
     public static void loadStudents(List<Student> students) {
         try (FileReader fr = new FileReader("students.csv");

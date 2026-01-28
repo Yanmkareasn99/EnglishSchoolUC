@@ -4,6 +4,7 @@ public class Main{
     public static List<Student> students = new ArrayList<>();
     public static List<Teacher> teachers = new ArrayList<>();
     public static List<Lesson> lessons = new ArrayList<>();
+    public static List<LessonCost> lessonCosts = new ArrayList<>();
     public static final Scanner sc = new Scanner(System.in);
     public static final String LINE = "----------------------------------------";
 
@@ -16,16 +17,16 @@ public class Main{
                 System.out.println(LINE);
                 System.out.print("""
               
-                                    ***** 英会話スクールシステム *****
-                                    
-                                              Main Menu
-                                              
-                                      1. 生徒
-                                      2. 講師
-                                      3. 受付
-                                      0. 終了してデータをCSVに書く
-                                      
-                                    番号を選択してください >>> """);
+                        ***** 英会話スクールシステム *****
+                        
+                                  Main Menu
+                                  
+                          1. 生徒
+                          2. 講師
+                          3. 受付
+                          0. 終了してデータをCSVに書く
+                          
+                        番号を選択してください >>> """);
 
                 int choice = Integer.parseInt(sc.nextLine());
                 switch (choice){
