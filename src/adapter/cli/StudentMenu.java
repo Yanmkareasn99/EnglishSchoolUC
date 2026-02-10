@@ -39,25 +39,26 @@ public class StudentMenu {
 
     public void showMenu() {
         System.out.println(Design.LINE);
-        System.out.print("生徒ID: ");
-        int studentId;
-        try {
-            studentId = Integer.parseInt(scanner.nextLine());
-        } catch (Exception e) {
-            System.out.println("数字を入力してください！！！");
-            return;
-        }
-        Student currentStudent = viewStudentUseCase.execute(studentId);
-        if (currentStudent == null) {
-            System.out.println("在籍中の生徒が見つかりません");
-            return;
-        }
+        while(true){
+            System.out.print("生徒ID: ");
+            int studentId;
+            try {
+                studentId = Integer.parseInt(scanner.nextLine());
+            } catch (Exception e) {
+                System.out.println("数字を入力してください！！！");
+                continue;
+            }
+            Student currentStudent = viewStudentUseCase.execute(studentId);
+            if (currentStudent == null) {
+                System.out.println("在籍中の生徒が見つかりません");
+                continue;
+            }
 
-        while (true) {
-            Design.clearScreen();
-            System.out.println(Design.LINE);
-            System.out.println("生徒: " + currentStudent.getName() + " (ID: " + studentId + ")");
-            System.out.print("""
+            while (true) {
+                Design.clearScreen();
+                System.out.println(Design.LINE);
+                System.out.println("生徒: " + currentStudent.getName() + " (ID: " + studentId + ")");
+                System.out.print("""
 
                         1: 生徒情報確認
                         2: レッスン予約
@@ -65,26 +66,28 @@ public class StudentMenu {
                         0: 戻る
 
                         """);
-            while (true) {
-                System.out.print("番号を入力してください>>> ");
-                try {
-                    int choice = Integer.parseInt(scanner.nextLine());
-                    switch (choice) {
-                        case 1 -> viewStudent(studentId);
-                        case 2 -> reserveLesson(studentId);
-                        case 3 -> viewLessons(studentId);
-                        case 0 -> { return; }
-                        default -> {
-                            System.out.println("無効な入力です。");
-                            continue;
+                while (true) {
+                    System.out.print("番号を入力してください>>> ");
+                    try {
+                        int choice = Integer.parseInt(scanner.nextLine());
+                        switch (choice) {
+                            case 1 -> viewStudent(studentId);
+                            case 2 -> reserveLesson(studentId);
+                            case 3 -> viewLessons(studentId);
+                            case 0 -> { return; }
+                            default -> {
+                                System.out.println("無効な入力です。");
+                                continue;
+                            }
                         }
+                        break;
+                    } catch (NumberFormatException e) {
+                        System.out.println("数字を入力してください。");
                     }
-                    break;
-                } catch (NumberFormatException e) {
-                    System.out.println("数字を入力してください。");
                 }
             }
         }
+
     }
 
     private void viewStudent(int studentId) {
